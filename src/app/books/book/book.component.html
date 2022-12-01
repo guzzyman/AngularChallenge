@@ -1,0 +1,26 @@
+<div class="grid grid-cols-2 border rounded-xl h-60 m-4">
+  <img
+    [src]="book.imageLink"
+    [alt]="book.title"
+    width="200px"
+    class="m-auto rounded-sm"
+  />
+  <div class="flex flex-col justify-center items-center">
+    <p class="text-ld font-bold">{{ book.title }} by {{ book.author }}</p>
+    <p class="my-4 font-bold">{{ book.amount | currency: "₦" }}</p>
+    <button
+      class="bg-yellow-400 rounded p-3"
+      *ngIf="!isInCart"
+      (click)="addToCart()"
+    >
+      Add to cart
+    </button>
+    <button
+      class="bg-yellow-400 rounded p-3"
+      *ngIf="isInCart"
+      (click)="removeFromCart()"
+    >
+      Remove from Cart
+    </button>
+  </div>
+</div>
