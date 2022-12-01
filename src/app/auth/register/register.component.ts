@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RegisterForm } from 'src/app/types/RegisterForm';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,6 +9,7 @@ import { RegisterForm } from 'src/app/types/RegisterForm';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  constructor(private authService:AuthService){}
   registerForm: RegisterForm = {
     email: '',
     password: '',
@@ -14,6 +17,6 @@ export class RegisterComponent {
   }
 
   submit() {
-    console.log(this.registerForm);
+    this.authService.register(this.registerForm);
   }
 }

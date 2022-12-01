@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginForm } from 'src/app/types/LoginForm';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +13,8 @@ export class LoginComponent {
     email: '',
     password: ''
   }
-
-  submit(){
-    console.log(this.form);
+  constructor(private authService: AuthService) { }
+  submit() {
+    this.authService.login(this.form);
   }
 }
